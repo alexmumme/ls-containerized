@@ -1,6 +1,7 @@
 # Logseq Self-hosted Images Monorepo
 
 [![Build Sync Image](https://github.com/yshalsager/logseq-selfhost/actions/workflows/build-selfhost-sync-image.yml/badge.svg)](https://github.com/yshalsager/logseq-selfhost/actions/workflows/build-selfhost-sync-image.yml)
+[![Build Sync Worker Image](https://github.com/yshalsager/logseq-selfhost/actions/workflows/build-selfhost-sync-worker-image.yml/badge.svg)](https://github.com/yshalsager/logseq-selfhost/actions/workflows/build-selfhost-sync-worker-image.yml)
 [![Build Publish Image](https://github.com/yshalsager/logseq-selfhost/actions/workflows/build-selfhost-publish-image.yml/badge.svg)](https://github.com/yshalsager/logseq-selfhost/actions/workflows/build-selfhost-publish-image.yml)
 [![Build Web Image](https://github.com/yshalsager/logseq-selfhost/actions/workflows/build-selfhost-web-image.yml/badge.svg)](https://github.com/yshalsager/logseq-selfhost/actions/workflows/build-selfhost-web-image.yml)
 [![Bump Sync Ref](https://github.com/yshalsager/logseq-selfhost/actions/workflows/bump-selfhost-sync-ref.yml/badge.svg)](https://github.com/yshalsager/logseq-selfhost/actions/workflows/bump-selfhost-sync-ref.yml)
@@ -8,15 +9,17 @@
 [![Bump Web Ref](https://github.com/yshalsager/logseq-selfhost/actions/workflows/bump-selfhost-web-ref.yml/badge.svg)](https://github.com/yshalsager/logseq-selfhost/actions/workflows/bump-selfhost-web-ref.yml)
 [![License](https://img.shields.io/github/license/yshalsager/logseq-selfhost.svg)](https://github.com/yshalsager/logseq-selfhost/blob/master/LICENSE)
 
-This repository publishes three self-hosted images from one codebase:
+This repository publishes four self-hosted images from one codebase:
 
 - `ghcr.io/<owner>/logseq-selfhost-sync` (Logseq `deps/db-sync` node adapter)
+- `ghcr.io/<owner>/logseq-selfhost-sync-worker` (Logseq `deps/db-sync` Worker with semantic REST and MCP APIs)
 - `ghcr.io/<owner>/logseq-selfhost-publish` (Logseq `deps/publish` worker through Wrangler local runtime)
 - `ghcr.io/<owner>/logseq-selfhost-web` (Logseq DB web app static bundle)
 
 ## Layout
 
 - `images/sync`: sync image Docker/build/deploy/smoke files
+- `images/sync-worker`: sync Worker image Docker/build/deploy/smoke files
 - `images/publish`: publish image Docker/build/deploy/smoke files
 - `images/web`: web image Docker/build/deploy/smoke files
 - `.github/workflows`: reusable build/bump workflows and thin wrappers
@@ -25,6 +28,7 @@ This repository publishes three self-hosted images from one codebase:
 ## Documentation
 
 - [Sync image guide](images/sync/README.md)
+- [Sync Worker image guide](images/sync-worker/README.md)
 - [Publish image guide](images/publish/README.md)
 - [Web image guide](images/web/README.md)
 
@@ -32,6 +36,7 @@ This repository publishes three self-hosted images from one codebase:
 
 - [Logseq repository](https://github.com/logseq/logseq)
 - Custom sync server URL support: [logseq/logseq#12459](https://github.com/logseq/logseq/pull/12459)
+- Semantic REST and MCP APIs: [logseq/logseq#12896](https://github.com/logseq/logseq/pull/12896)
 - Publish server URL support is required in the Logseq client to point at `logseq-selfhost-publish`
 - DB web branch currently tracked: `master`
 

@@ -1,0 +1,30 @@
+services:
+  sync-worker:
+    image: ghcr.io/${GHCR_OWNER:-yshalsager}/logseq-selfhost-sync-worker:${IMAGE_TAG:-latest}
+    container_name: logseq-selfhost-sync-worker
+    environment:
+      COGNITO_ISSUER: ${COGNITO_ISSUER:-https://cognito-idp.us-east-1.amazonaws.com/us-east-1_dtagLnju8}
+      COGNITO_CLIENT_ID: ${COGNITO_CLIENT_ID:-69cs1lgme7p8kbgld8n5kseii6}
+      COGNITO_JWKS_URL: ${COGNITO_JWKS_URL:-https://cognito-idp.us-east-1.amazonaws.com/us-east-1_dtagLnju8/.well-known/jwks.json}
+      COGNITO_CLIENT_IDS: ${COGNITO_CLIENT_IDS:-}
+      OPENAI_APPS_CHALLENGE: ${OPENAI_APPS_CHALLENGE:-}
+      DB_SYNC_ADMIN_TOKEN: ${DB_SYNC_ADMIN_TOKEN:-}
+      WRANGLER_LOG: ${WRANGLER_LOG:-info}
+    ports:
+      - '${SYNC_WORKER_PORT:-8789}:8787'
+    volumes:
+      - sync_worker_data:/data
+    read_only: true
+    tmpfs:
+      - /tmp
+      - /app/worker/.wrangler/tmp:uid=1000,gid=1000,mode=1777
+      - /app/worker/node_modules/.mf:uid=1000,gid=1000,mode=1777
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    restart: unless-stopped
+    pull_policy: always
+
+volumes:
+  sync_worker_data:

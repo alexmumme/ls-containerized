@@ -8,6 +8,8 @@
 
 This image packages Logseq `deps/db-sync` node adapter for self-hosting.
 
+Use [`images/sync-worker`](../sync-worker/README.md) instead when semantic REST or MCP access is required. The two images use incompatible storage and cannot share a data volume.
+
 ## Upstream URLs
 
 - [Logseq repository](https://github.com/logseq/logseq)
