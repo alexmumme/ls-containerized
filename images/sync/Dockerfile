@@ -20,7 +20,7 @@ RUN curl -fsSL https://mise.run | MISE_VERSION="${MISE_VERSION}" sh
 
 WORKDIR /tooling
 COPY mise.toml /tooling/mise.toml
-RUN mise trust /tooling/mise.toml && mise install
+RUN mise trust /tooling/mise.toml && mise install node java clojure
 
 WORKDIR /src
 RUN git init . \

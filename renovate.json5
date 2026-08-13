@@ -9,7 +9,7 @@
     'helpers:pinGitHubActionDigests',
   ],
 
-  enabledManagers: ['github-actions', 'dockerfile', 'docker-compose', 'custom.regex'],
+  enabledManagers: ['github-actions', 'dockerfile', 'docker-compose', 'mise', 'custom.regex'],
 
   schedule: ['before 3am on saturday'],
   minimumReleaseAge: '3 days',

@@ -20,7 +20,11 @@ RUN curl -fsSL https://mise.run | MISE_VERSION="${MISE_VERSION}" sh
 
 WORKDIR /tooling
 COPY mise.toml /tooling/mise.toml
-RUN mise trust /tooling/mise.toml && mise install
+RUN --mount=type=cache,target=/root/.npm \
+    mise trust /tooling/mise.toml \
+  && mise install \
+  && mkdir -p /tmp/wrangler \
+  && cp -a "$(mise where wrangler)/." /tmp/wrangler/
 
 WORKDIR /src
 RUN git init . \
@@ -41,7 +45,6 @@ RUN mkdir -p /tmp/publish-runtime-node-modules \
 RUN --mount=type=cache,target=/root/.m2/repository mise exec -- pnpm run release
 
 FROM node:24-bookworm-slim@sha256:6f7b03f7c2c8e2e784dcf9295400527b9b1270fd37b7e9a7285cf83b6951452d
-ARG WRANGLER_VERSION=latest
 
 LABEL org.opencontainers.image.description="Self-hosted Logseq Publish image (Wrangler local runtime)"
 
@@ -49,8 +52,7 @@ RUN apt-get update \
   && apt-get install -y --no-install-recommends ca-certificates \
   && rm -rf /var/lib/apt/lists/*
 
-RUN npm install -g "wrangler@${WRANGLER_VERSION}" \
-  && mkdir -p /app/worker /data/home /data/wrangler \
+RUN mkdir -p /app/worker /data/home /data/wrangler \
   && mkdir -p /app/worker/.wrangler/tmp /app/worker/node_modules/.mf \
   && chown -R node:node /app /data
 
@@ -58,9 +60,11 @@ WORKDIR /app/worker
 
 COPY --chown=node:node --from=build /tmp/publish-runtime-node-modules /app/worker/node_modules
 COPY --chown=node:node --from=build /src/deps/publish/worker /app/worker
+COPY --from=build /tmp/wrangler /opt/wrangler
 COPY --chown=node:node images/publish/wrangler.selfhost.toml /app/worker/wrangler.selfhost.toml
 
 ENV HOME=/data/home
+ENV PATH=/opt/wrangler/bin:$PATH
 ENV CLOUDFLARE_INCLUDE_PROCESS_ENV=true
 ENV PUBLISH_PORT=8787
 ENV WRANGLER_LOG=info
