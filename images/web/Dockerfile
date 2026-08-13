@@ -41,7 +41,9 @@ RUN --mount=type=cache,target=/root/.local/share/pnpm/store \
     mise exec -- clojure -M:cljs release app db-worker && \
     mise exec -- pnpm run webpack-app-build
 
-RUN mkdir -p /tmp/web && rsync -a --delete /src/static/ /tmp/web/
+RUN mkdir -p /tmp/web \
+  && rsync -a --delete /src/static/ /tmp/web/ \
+  && find /tmp/web -type f -name '*.map' -delete
 
 FROM nginxinc/nginx-unprivileged:stable-alpine@sha256:44e36330f74d4f3a1d4e222acca9e23b401fb87811a7597024502bb759c4dd49
 LABEL org.opencontainers.image.description="Self-hosted Logseq DB web app static image"
