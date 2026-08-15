@@ -12,7 +12,7 @@
 This repository publishes four self-hosted images from one codebase:
 
 - `ghcr.io/<owner>/logseq-selfhost-sync` (Logseq `deps/db-sync` node adapter)
-- `ghcr.io/<owner>/logseq-selfhost-sync-worker` (Logseq `deps/db-sync` Worker with semantic REST and MCP APIs)
+- `ghcr.io/<owner>/logseq-selfhost-sync-worker` (Logseq `deps/db-sync` Worker with semantic REST and MCP APIs; incompatible storage with `sync`)
 - `ghcr.io/<owner>/logseq-selfhost-publish` (Logseq `deps/publish` worker through Wrangler local runtime)
 - `ghcr.io/<owner>/logseq-selfhost-web` (Logseq DB web app static bundle)
 
