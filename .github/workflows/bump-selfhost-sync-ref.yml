@@ -2,8 +2,8 @@ name: bump-selfhost-sync-ref
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '0 3 * * 6'
+  # schedule:
+  #   - cron: '0 3 * * 6'
 
 permissions:
   contents: write

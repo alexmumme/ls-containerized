@@ -11,8 +11,8 @@ on:
         description: Optional image tag override
         required: false
         default: ''
-  schedule:
-    - cron: '0 4 * * 6'
+  # schedule:
+  #   - cron: '0 4 * * 6'
   push:
     branches:
       - master
