@@ -59,12 +59,12 @@ Workflow: `.github/workflows/build-selfhost-sync-worker-image.yml`
 - Manual dispatch accepts optional `logseq_ref` and `image_tag` values.
 - The fallback build runs Saturdays at 04:00 UTC.
 - Pushes to `master` build when image inputs change.
-- Published image: `ghcr.io/<GHCR_OWNER>/logseq-selfhost-sync-worker:<tag>`.
+- Published image: `ghcr.io/<GHCR_OWNER>/ls-containerized-sync-worker:<tag>`.
 
 ## Smoke test
 
 ```bash
-IMAGE=ghcr.io/<GHCR_OWNER>/logseq-selfhost-sync-worker:<tag> ./images/sync-worker/scripts/smoke-test.sh
+IMAGE=ghcr.io/<GHCR_OWNER>/ls-containerized-sync-worker:<tag> ./images/sync-worker/scripts/smoke-test.sh
 ```
 
 The test checks startup migrations, health, OpenAPI, API docs, unauthenticated graph rejection, and the MCP route.

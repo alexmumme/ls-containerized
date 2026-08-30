@@ -31,12 +31,12 @@ jobs:
   build:
     uses: ./.github/workflows/build-selfhost-image-reusable.yml
     with:
-      image_name: logseq-selfhost-web
+      image_name: ls-containerized-web
       image_description: Self-hosted Logseq DB web app static image
       dockerfile: images/web/Dockerfile
       tracked_ref_file: images/web/UPSTREAM_LOGSEQ_DB_REF
       default_logseq_ref: master
-      cache_scope: logseq-selfhost-web
+      cache_scope: ls-containerized-web
       build_timeout_minutes: 90
       logseq_ref: ${{ github.event.inputs.logseq_ref || '' }}
       image_tag: ${{ github.event.inputs.image_tag || '' }}

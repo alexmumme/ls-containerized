@@ -31,12 +31,12 @@ jobs:
   build:
     uses: ./.github/workflows/build-selfhost-image-reusable.yml
     with:
-      image_name: logseq-selfhost-publish
+      image_name: ls-containerized-publish
       image_description: Self-hosted Logseq Publish image (Wrangler local runtime)
       dockerfile: images/publish/Dockerfile
       tracked_ref_file: images/publish/UPSTREAM_PUBLISH_REF
       default_logseq_ref: master
-      cache_scope: logseq-selfhost-publish
+      cache_scope: ls-containerized-publish
       build_timeout_minutes: 60
       logseq_ref: ${{ github.event.inputs.logseq_ref || '' }}
       image_tag: ${{ github.event.inputs.image_tag || '' }}

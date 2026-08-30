@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-IMAGE="${IMAGE:-${1:-logseq-selfhost-sync-worker:local}}"
+IMAGE="${IMAGE:-${1:-ls-containerized-sync-worker:local}}"
 PORT="${PORT:-18789}"
-CONTAINER_NAME="${CONTAINER_NAME:-logseq-selfhost-sync-worker-smoke}"
+CONTAINER_NAME="${CONTAINER_NAME:-ls-containerized-sync-worker-smoke}"
 MAX_RETRIES="${MAX_RETRIES:-30}"
 
 docker rm -f "${CONTAINER_NAME}" >/dev/null 2>&1 || true

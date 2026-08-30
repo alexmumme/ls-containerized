@@ -43,8 +43,8 @@ Pinned upstream ref file: `images/web/UPSTREAM_LOGSEQ_DB_REF`
 
 Published tags:
 
-- `ghcr.io/<GHCR_OWNER>/logseq-selfhost-web:<tag>`
-- `ghcr.io/<GHCR_OWNER>/logseq-selfhost-web:latest` (default branch builds)
+- `ghcr.io/<GHCR_OWNER>/ls-containerized-web:<tag>`
+- `ghcr.io/<GHCR_OWNER>/ls-containerized-web:latest` (default branch builds)
 
 ## Deploy
 
@@ -60,7 +60,7 @@ docker compose -f images/web/docker-compose.yml up -d
 From repository root:
 
 ```bash
-IMAGE=ghcr.io/<GHCR_OWNER>/logseq-selfhost-web:<tag> ./images/web/scripts/smoke-test.sh
+IMAGE=ghcr.io/<GHCR_OWNER>/ls-containerized-web:<tag> ./images/web/scripts/smoke-test.sh
 ```
 
 Default checks:

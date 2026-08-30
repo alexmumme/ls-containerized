@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-IMAGE="${IMAGE:-${1:-logseq-selfhost-publish:local}}"
+IMAGE="${IMAGE:-${1:-ls-containerized-publish:local}}"
 PORT="${PORT:-18788}"
-CONTAINER_NAME="${CONTAINER_NAME:-logseq-selfhost-publish-smoke}"
+CONTAINER_NAME="${CONTAINER_NAME:-ls-containerized-publish-smoke}"
 WAIT_SECONDS="${WAIT_SECONDS:-4}"
 MAX_RETRIES="${MAX_RETRIES:-30}"
 

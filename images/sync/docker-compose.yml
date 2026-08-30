@@ -1,7 +1,7 @@
 services:
   sync:
-    image: ghcr.io/${GHCR_OWNER:-yshalsager}/logseq-selfhost-sync:${IMAGE_TAG:-latest}
-    container_name: logseq-selfhost-sync
+    image: ghcr.io/${GHCR_OWNER:-yshalsager}/ls-containerized-sync:${IMAGE_TAG:-latest}
+    container_name: ls-containerized-sync
     env_file:
       - path: .env.example
         required: true

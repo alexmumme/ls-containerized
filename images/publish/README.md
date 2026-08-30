@@ -59,8 +59,8 @@ Pinned upstream ref file: `images/publish/UPSTREAM_PUBLISH_REF`
 
 Published tags:
 
-- `ghcr.io/<GHCR_OWNER>/logseq-selfhost-publish:<tag>`
-- `ghcr.io/<GHCR_OWNER>/logseq-selfhost-publish:latest` (default branch builds)
+- `ghcr.io/<GHCR_OWNER>/ls-containerized-publish:<tag>`
+- `ghcr.io/<GHCR_OWNER>/ls-containerized-publish:latest` (default branch builds)
 
 ## Deploy
 
@@ -88,7 +88,7 @@ Settings -> Advanced -> Publish server URL -> https://publish.example.com
 From repository root:
 
 ```bash
-IMAGE=ghcr.io/<GHCR_OWNER>/logseq-selfhost-publish:<tag> ./images/publish/scripts/smoke-test.sh
+IMAGE=ghcr.io/<GHCR_OWNER>/ls-containerized-publish:<tag> ./images/publish/scripts/smoke-test.sh
 ```
 
 Default checks:

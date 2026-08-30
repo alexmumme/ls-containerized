@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-IMAGE="${IMAGE:-ghcr.io/yshalsager/logseq-selfhost-web:latest}"
+IMAGE="${IMAGE:-ghcr.io/yshalsager/ls-containerized-web:latest}"
 PORT="${PORT:-18080}"
-CONTAINER="logseq-selfhost-web-smoke-$$"
+CONTAINER="ls-containerized-web-smoke-$$"
 
 cleanup() {
   docker rm -f "$CONTAINER" >/dev/null 2>&1 || true
@@ -14,7 +14,7 @@ docker run -d --rm --name "$CONTAINER" -p "127.0.0.1:${PORT}:8080" "$IMAGE" >/de
 
 ok=false
 for _ in $(seq 1 30); do
-  if curl -fsS "http://127.0.0.1:${PORT}/" >/tmp/logseq-selfhost-web-smoke.html 2>/dev/null; then
+  if curl -fsS "http://127.0.0.1:${PORT}/" >/tmp/ls-containerized-web-smoke.html 2>/dev/null; then
     ok=true
     break
   fi
@@ -26,13 +26,13 @@ if [[ "$ok" != true ]]; then
   exit 1
 fi
 
-status="$(curl -sS -o /tmp/logseq-selfhost-web-smoke.html -w '%{http_code}' "http://127.0.0.1:${PORT}/")"
+status="$(curl -sS -o /tmp/ls-containerized-web-smoke.html -w '%{http_code}' "http://127.0.0.1:${PORT}/")"
 if [[ "$status" != "200" ]]; then
   echo "Smoke test failed: expected HTTP 200 from /, got ${status}" >&2
   exit 1
 fi
 
-if ! grep -Eqi '<!doctype html|<html' /tmp/logseq-selfhost-web-smoke.html; then
+if ! grep -Eqi '<!doctype html|<html' /tmp/ls-containerized-web-smoke.html; then
   echo 'Smoke test failed: response body does not look like HTML' >&2
   exit 1
 fi

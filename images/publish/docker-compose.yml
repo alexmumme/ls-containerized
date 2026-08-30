@@ -1,7 +1,7 @@
 services:
   publish:
-    image: ghcr.io/${GHCR_OWNER:-yshalsager}/logseq-selfhost-publish:${IMAGE_TAG:-latest}
-    container_name: logseq-selfhost-publish
+    image: ghcr.io/${GHCR_OWNER:-yshalsager}/ls-containerized-publish:${IMAGE_TAG:-latest}
+    container_name: ls-containerized-publish
     env_file:
       - path: .env.example
         required: true

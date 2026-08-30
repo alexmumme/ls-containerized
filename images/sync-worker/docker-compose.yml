@@ -1,7 +1,7 @@
 services:
   sync-worker:
-    image: ghcr.io/${GHCR_OWNER:-yshalsager}/logseq-selfhost-sync-worker:${IMAGE_TAG:-latest}
-    container_name: logseq-selfhost-sync-worker
+    image: ghcr.io/${GHCR_OWNER:-yshalsager}/ls-containerized-sync-worker:${IMAGE_TAG:-latest}
+    container_name: ls-containerized-sync-worker
     environment:
       COGNITO_ISSUER: ${COGNITO_ISSUER:-https://cognito-idp.us-east-1.amazonaws.com/us-east-1_dtagLnju8}
       COGNITO_CLIENT_ID: ${COGNITO_CLIENT_ID:-69cs1lgme7p8kbgld8n5kseii6}

@@ -47,8 +47,8 @@ Pinned upstream ref file: `images/sync/UPSTREAM_DB_SYNC_REF`
 
 Published tags:
 
-- `ghcr.io/<GHCR_OWNER>/logseq-selfhost-sync:<tag>`
-- `ghcr.io/<GHCR_OWNER>/logseq-selfhost-sync:latest` (default branch builds)
+- `ghcr.io/<GHCR_OWNER>/ls-containerized-sync:<tag>`
+- `ghcr.io/<GHCR_OWNER>/ls-containerized-sync:latest` (default branch builds)
 
 ## Deploy
 
@@ -64,7 +64,7 @@ docker compose -f images/sync/docker-compose.yml up -d
 From repository root:
 
 ```bash
-IMAGE=ghcr.io/<GHCR_OWNER>/logseq-selfhost-sync:<tag> ./images/sync/scripts/smoke-test.sh
+IMAGE=ghcr.io/<GHCR_OWNER>/ls-containerized-sync:<tag> ./images/sync/scripts/smoke-test.sh
 ```
 
 Default checks:

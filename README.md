@@ -11,10 +11,10 @@
 
 This repository publishes four self-hosted images from one codebase:
 
-- `ghcr.io/<owner>/logseq-selfhost-sync` (Logseq `deps/db-sync` node adapter)
-- `ghcr.io/<owner>/logseq-selfhost-sync-worker` (Logseq `deps/db-sync` Worker with semantic REST and MCP APIs; incompatible storage with `sync`)
-- `ghcr.io/<owner>/logseq-selfhost-publish` (Logseq `deps/publish` worker through Wrangler local runtime)
-- `ghcr.io/<owner>/logseq-selfhost-web` (Logseq DB web app static bundle)
+- `ghcr.io/<owner>/ls-containerized-sync` (Logseq `deps/db-sync` node adapter)
+- `ghcr.io/<owner>/ls-containerized-sync-worker` (Logseq `deps/db-sync` Worker with semantic REST and MCP APIs; incompatible storage with `sync`)
+- `ghcr.io/<owner>/ls-containerized-publish` (Logseq `deps/publish` worker through Wrangler local runtime)
+- `ghcr.io/<owner>/ls-containerized-web` (Logseq DB web app static bundle)
 
 ## Layout
 
@@ -37,7 +37,7 @@ This repository publishes four self-hosted images from one codebase:
 - [Logseq repository](https://github.com/logseq/logseq)
 - Custom sync server URL support: [logseq/logseq#12459](https://github.com/logseq/logseq/pull/12459)
 - Semantic REST and MCP APIs: [logseq/logseq#12896](https://github.com/logseq/logseq/pull/12896)
-- Publish server URL support is required in the Logseq client to point at `logseq-selfhost-publish`
+- Publish server URL support is required in the Logseq client to point at `ls-containerized-publish`
 - DB web branch currently tracked: `master`
 
 ## License
